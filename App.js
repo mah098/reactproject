@@ -18,24 +18,121 @@ const Header = () => {
 }
 
 const ResCard = (props) => {
-       const {resName, resRating, resDuration} = props;
+       const {resData} = props;
         return <>
                  <div className="card">
                         <div style={{height: "170px"}}>
                                 <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/10/24/3ab699af-9b2c-4107-9d66-88c5e4e540ae_822315.JPG" alt="res-image"/>
                         </div>
-                        <h1 className="rest-name">{resName}</h1>
+                        <h1 className="rest-name">{resData.info.name}</h1>
                         <div className="highlight">
-                                <span>{resRating}</span><span>{resDuration} min</span>
+                                <span>{resData.info.avgRating}</span><span>{resData.info.sla.slaString} min</span>
                         </div>
-                        <p>sandwich, salads, wrap,...</p>
-                        <p>Richmond Town</p>
+                        <p>{resData.info.cuisines.join(", ")}</p>
+                        <p>{resData.info.areaName}</p>
                  </div>
          </>
  }
 
 const Body = () => {
-        const resData = [
+        const resObj = {
+                
+                        "info": {
+                            "id": "822315",
+                            "name": "Subway",
+                            "cloudinaryImageId": "RX_THUMBNAIL/IMAGES/VENDOR/2024/10/24/3ab699af-9b2c-4107-9d66-88c5e4e540ae_822315.JPG",
+                            "locality": "Langford Road",
+                            "areaName": "Richmond Town",
+                            "costForTwo": "₹350 for two",
+                            "cuisines": [
+                                "Sandwich",
+                                "Salads",
+                                "Wrap",
+                                "Healthy Food"
+                            ],
+                            "avgRating": 4.4,
+                            "parentId": "2",
+                            "avgRatingString": "4.4",
+                            "totalRatingsString": "675",
+                            "sla": {
+                                "deliveryTime": 22,
+                                "lastMileTravel": 2,
+                                "serviceability": "SERVICEABLE",
+                                "slaString": "20-25 mins",
+                                "lastMileTravelString": "2.0 km",
+                                "iconType": "ICON_TYPE_EMPTY"
+                            },
+                            "availability": {
+                                "nextCloseTime": "2024-12-24 01:00:00",
+                                "opened": true
+                            },
+                            "badges": {
+                                "imageBadges": [
+                                    {
+                                        "imageId": "bolt/Bolt%20Listing%20badge@3x.png",
+                                        "description": "bolt!"
+                                    },
+                                    {
+                                        "imageId": "Rxawards/_CATEGORY-Sandwiches.png",
+                                        "description": "Delivery!"
+                                    }
+                                ]
+                            },
+                            "isOpen": true,
+                            "type": "F",
+                            "badgesV2": {
+                                "entityBadges": {
+                                    "imageBased": {
+                                        "badgeObject": [
+                                            {
+                                                "attributes": {
+                                                    "description": "bolt!",
+                                                    "imageId": "bolt/Bolt%20Listing%20badge@3x.png"
+                                                }
+                                            },
+                                            {
+                                                "attributes": {
+                                                    "description": "Delivery!",
+                                                    "imageId": "Rxawards/_CATEGORY-Sandwiches.png"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "textBased": {},
+                                    "textExtendedBadges": {}
+                                }
+                            },
+                            "aggregatedDiscountInfoV3": {
+                                "header": "ITEMS",
+                                "subHeader": "AT ₹119"
+                            },
+                            "differentiatedUi": {
+                                "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+                                "differentiatedUiMediaDetails": {
+                                    "lottie": {},
+                                    "video": {}
+                                }
+                            },
+                            "reviewsSummary": {},
+                            "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+                            "restaurantOfferPresentationInfo": {},
+                            "externalRatings": {
+                                "aggregatedRating": {
+                                    "rating": "--"
+                                }
+                            },
+                            "ratingsDisplayPreference": "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY"
+                        },
+                        "analytics": {
+                            "context": "seo-data-717f32f7-76a9-497b-81d3-fc70bdab163c"
+                        },
+                        "cta": {
+                            "link": "https://www.swiggy.com/city/bangalore/subway-langford-road-richmond-town-rest822315",
+                            "type": "WEBLINK"
+                        }
+                    
+        }
+      /*  const resData = [
                         {
                             "info": {
                                 "id": "822315",
@@ -1065,12 +1162,12 @@ const Body = () => {
                                 "type": "WEBLINK"
                             }
                         }
-        ]
+        ] */
 
         return <>
                 <h3>Search Bar</h3>
                 <div className="card-container">
-                        <ResCard resName = "KFC" resRating = "5.0" resDuration ="45 " />
+                        <ResCard resData = { resObj } />
                         
                 </div>
         </>
