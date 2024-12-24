@@ -61,4 +61,12 @@ footer {
         background-color: rgb(159, 159, 159);
     }
 }
+.btn{
+    margin:40px 0;
+    background-color: white;
+    color: chocolate;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
 
