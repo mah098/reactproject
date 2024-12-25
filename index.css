@@ -1,6 +1,7 @@
 body {
     background-color: rgb(38, 38, 38);
     color: white;
+    box-sizing: border-box;
 }
 .main{
     margin: 0 auto;
@@ -68,5 +69,33 @@ footer {
     padding: 10px 15px;
     border-radius: 10px;
     cursor: pointer;
+}
+
+.shimmerContainer{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 120px;
+}
+.shimmerCard{
+    width: 300px;
+    height: 368px;
+    background-color: #414141;
+    margin: 10px;
+}
+
+.filter-section{
+    display: flex;
+    column-gap: 15px;
+}
+.search-box{
+    display: flex;
+    align-items: center;
+}
+.text-box{
+    display: flex;
+    height:28px;
+    border-radius: 10px;
+    border: none;
+    padding:5px 10px;
 }
 
