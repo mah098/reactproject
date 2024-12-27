@@ -3,6 +3,7 @@ import ResCard from "./ResCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Body = () => {
     const [restaurantData, setRestaurantData] = useState([])
     let [filteredResData, setFilteredResData] = useState([])
@@ -19,8 +20,10 @@ const Body = () => {
         setFilteredResData(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
     console.log("component rendered");
-    // if (restaurantData.length === 0)
-    //     return <h1>Loading...</h1>
+    
+    const onlineStatus = useOnlineStatus();
+    if (onlineStatus === false) return <h1>You are offline, please check your internet connection.</h1>
+    
 return restaurantData?.length === 0 ? <Shimmer/> : <>
             <div className="filter-section">
                 <div className="search-box">

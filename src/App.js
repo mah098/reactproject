@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "../index.css";
 import Header from "./components/Header";
@@ -8,7 +8,11 @@ import { Outlet, RouterProvider, createBrowserRouter } from "react-router";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
+//import SwiggyMart from "./components/SwiggyMart";
 import RestaurantMenu from "./components/RestaurantMenu";
+import Shimmer from "./components/Shimmer";
+
+const SwiggyMart = lazy(() => import("./components/SwiggyMart"));
 
 const App = () => {
     return <>
@@ -36,6 +40,12 @@ const appRouter = createBrowserRouter([
             {
                 path: "/contact",
                 element: <Contact/>,
+            },
+            {
+                path: "/swiggymart",
+                element: <Suspense fallback={<Shimmer/>}>
+                            <SwiggyMart/>
+                        </Suspense>,
             },
             {
                 path: "/restaurant/:resId",
